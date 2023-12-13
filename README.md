@@ -64,7 +64,7 @@ sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 
 #### Step 3.2: Install Tomcat
 
-Navigate to the temporary folder to download and extract Tomcat 9.0.83::
+Navigate to the temporary folder to download and extract [Tomcat 9.0.83](https://gis.stackexchange.com/questions/389555/geoserver-not-compatible-with-tomcat-10):
 
 ```sh
 cd /tmp
@@ -400,6 +400,15 @@ Locate the following configuration and uncomment it to utilize the domain proxy:
 <context-param>
   <param-name>PROXY_BASE_URL</param-name>
   <param-value>https://subdomain.example.com/geoserver</param-value>
+</context-param>
+```
+
+Configure the allow list for [CSRF Protection](https://docs.geoserver.org/latest/en/user/security/webadmin/csrf.html) on Geoserver.
+
+```sh
+<context-param>
+  <param-name>GEOSERVER_CSRF_WHITELIST</param-name>
+  <param-value>subdomain.example.com</param-value>
 </context-param>
 ```
 
